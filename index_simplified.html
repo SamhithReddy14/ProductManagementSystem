@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .product-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .product-description {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .response-message {
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .response-message.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 25px;
+            }
+
+            .product-title {
+                font-size: 24px;
+            }
+
+            .product-description {
+                font-size: 14px;
+            }
+
+            .feature-list {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">📊</div>
+            <h1 class="product-title">Product Management System</h1>
+            <p class="product-description">
+                Streamline your product management workflow with our intuitive and powerful system. 
+                Organize, track, and optimize your products all in one place.
+            </p>
+        </div>
+
+        <button class="cta-button" id="ctaButton">Get Started Now</button>
+        <div id="responseMessage" class="response-message"></div>
+
+    </div>
+
+    <script>
+        const ctaButton = document.getElementById('ctaButton');
+        const responseMessage = document.getElementById('responseMessage');
+        let clickCount = 0;
+
+        ctaButton.addEventListener('click', function() {
+            clickCount++;
+            responseMessage.textContent = `✓ You're ready to get started! (Clicks: ${clickCount})`;
+            responseMessage.classList.add('show');
+
+            this.textContent = 'Loading...';
+            this.disabled = true;
+
+            setTimeout(() => {
+                this.textContent = 'Get Started Now';
+                this.disabled = false;
+                responseMessage.classList.remove('show');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
